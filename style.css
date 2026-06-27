@@ -1,0 +1,219 @@
+/* Base Style Customizations */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0b0204;
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+}
+
+.gold-text {
+  color: #d4af37;
+}
+.tracking-wide {
+  letter-spacing: 3px;
+}
+.tracking-widest {
+  letter-spacing: 5px;
+}
+
+/* 3D Doors Styling */
+.door-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  perspective: 1800px;
+  display: flex;
+  z-index: 9999;
+}
+
+.door {
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    #3a020d 0%,
+    #170004 100%
+  ); /* Deep Luxury Burgundy */
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.8);
+  transition: transform 2.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.left-door {
+  transform-origin: left center;
+  border-right: 2px solid rgba(212, 175, 55, 0.4);
+}
+
+.right-door {
+  transform-origin: right center;
+  border-left: 2px solid rgba(212, 175, 55, 0.4);
+}
+
+/* Door Animation */
+.door-wrapper.open .left-door {
+  transform: rotateY(-115deg);
+}
+.door-wrapper.open .right-door {
+  transform: rotateY(115deg);
+}
+.door-wrapper.open {
+  pointer-events: none;
+}
+
+.door-timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  transition: opacity 0.5s ease;
+}
+
+.door-wrapper.open .door-timer {
+  opacity: 0;
+}
+
+/* Floating Audio FAB Button */
+.audio-fab {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 10005;
+  background: linear-gradient(135deg, #d4af37 0%, #aa841c 100%);
+  color: #fff;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+  transition: transform 0.2s;
+}
+.audio-fab:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+/* Main Card Luxury Glassmorphism Look */
+.main-card {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: radial-gradient(circle, #1f040a 0%, #050001 100%);
+  padding: 30px 15px;
+}
+
+.content-box {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 25px;
+  padding: 35px 25px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 1.5s ease-out;
+}
+
+/* Fade-in main content smoothly after doors open */
+.door-wrapper.open + .main-card .content-box {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Typography styles */
+.anniversary-title {
+  font-family: "Great Vibes", cursive;
+  color: #d4af37;
+  font-size: 2.8rem;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.couple-names {
+  font-family: "Great Vibes", cursive;
+  color: #ffffff;
+  font-size: 2.5rem;
+}
+
+.quote {
+    font-style: italic;
+    font-weight: 500;        /* 💡 300 තිබ්බ එක 500/600 කරලා ටෙක්ස්ට් එක Bold කරා */
+    font-size: 18px;         /* 💡 අකුරු ටිකක් ලස්සනට ලොකු කරා */
+    line-height: 1.6;
+    color: #ffffff !important; /* 💡 Dark background එකේ තදින් කැපිලා පේන්න සුදු පාට කරා */
+    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5); /* කියවන්න ලේසි වෙන්න පොඩි shadow එකක් */
+}
+
+/* Fixed Slider Images Framework */
+/* මුළු ෆොටෝ රාමුවම (Slider Frame) පොඩි කරන කොටස */
+#anniversaryCarousel {
+  max-width: 600px; /* 💡 රාමුවේ පළල (Width) 250px දක්වා අඩු කරා */
+  margin: 0 auto; /* රාමුව මැදට (Center) ගන්න */
+}
+
+/* ෆ්‍රේම් එක ඇතුළේ තියෙන පින්තූරවල සයිස් එක */
+.slide-img {
+  height: 500px; /* 💡 රාමුවේ උස (Height) 200px දක්වා අඩු කරා (usa usa) */
+  width: 400%;
+  object-fit: contain; /* ෆොටෝ එකේ කිසිම කෑල්ලක් කැපෙන්නේ නැහැ */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.15
+  ); /* දෙපැත්තෙන් හිස් වෙන තැන් වලට ලස්සන ඩාර්ක් පසුබිමක් */
+}
+
+/* Custom Image Overlay for Captions */
+.carousel-caption {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px 10px 10px 10px;
+}
+.carousel-caption p {
+  margin-bottom: 0;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* Hearts and Badge Styling */
+.pulse-heart {
+  color: #e63946;
+  font-size: 2.5rem;
+  animation: pulse 1.2s infinite;
+}
+
+.badge-date {
+  background: rgba(212, 175, 55, 0.1);
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* CSS Keyframe Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+    text-shadow: 0 0 15px rgba(230, 57, 70, 0.6);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
