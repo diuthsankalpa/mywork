@@ -15,26 +15,31 @@
 <body>
 
     <!-- Background Audio -->
-    <audio id="bgMusic" loop muted>
-        <source src="anniversarymusic.mp3" type="audio/mpeg">
-    </audio>
+   <audio id="bgMusic" loop>
+    <source src="anniversary-music.mp3" type="audio/mpeg">
+</audio>
 
-    <!-- Floating Audio Control Button -->
-    <button id="audioToggle" class="btn audio-fab" onclick="toggleAudio()">
-        <i id="audioIcon" class="fas fa-volume-mute"></i>
-    </button>
+<button id="audioToggle" class="btn audio-fab" onclick="toggleAudio()">
+    <i id="audioIcon" class="fas fa-volume-up"></i>
+</button>
 
-    <!-- 3D Door Overlay Container -->
-    <div class="door-wrapper" id="doorContainer">
-        <div class="door-timer text-center text-white">
-            <span class="d-block text-uppercase tracking-widest mb-2" style="font-size: 12px; color: #d4af37;">Our Beautiful Journey</span>
-            <h1 id="countdownText" class="display-1 fw-bold gold-text">3</h1>
-            <p class="text-uppercase tracking-wide">Years of Pure Love</p>
-        </div>
-        
-        <div class="door left-door"></div>
-        <div class="door right-door"></div>
+<div class="door-wrapper" id="doorContainer">
+    <div id="startAction" class="text-center position-absolute" style="z-index: 10001; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <button class="btn btn-outline-warning btn-lg px-4 py-3 rounded-pill tracking-wide fw-bold" onclick="startOurJourney()" style="border-width: 2px; text-shadow: 0 0 10px rgba(212,175,55,0.5); font-size: 1.1rem; box-shadow: 0 0 15px rgba(212,175,55,0.2);">
+            <i class="fas fa-heart me-2 text-danger animate-pulse"></i> OPEN OUR JOURNEY
+        </button>
     </div>
+
+    <div id="countdownArea" class="door-timer text-center text-white d-none">
+        <span class="d-block text-uppercase tracking-widest mb-2" style="font-size: 12px; color: #d4af37;">Our Beautiful Journey</span>
+        <h1 id="countdownText" class="display-1 fw-bold gold-text">3</h1>
+        <p class="text-uppercase tracking-wide">Years of Pure Love</p>
+    </div>
+    
+    <div class="door left-door"></div>
+    <div class="door right-door"></div>
+</div>
+
 
     <!-- Main Content Area (Revealed after doors open) -->
     <div class="main-card container-fluid px-0">
